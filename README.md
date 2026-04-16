@@ -1,4 +1,4 @@
-# 🎮 Simon Dice — Proyecto de Programación
+# 🎮 Simon Dice — Proyecto de Lenguaje de marcas
 
 > Implementación del clásico juego *Simon Dice* en consola utilizando JavaScript y Node.js.
 
