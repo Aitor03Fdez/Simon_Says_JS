@@ -3,8 +3,20 @@ const tColores = {
   Verde: 1,
   Azul: 2,
   Dorado: 3,
+  Blanco: 4,
+  Marron: 5,
+  Naranja: 6
 };
-let MAX_COLORES_SEQ = 12;
+
+const tModo = {
+  Facil: 0,
+  Dificil: 1
+};
+
+let MAX_COLORES_SEQ = 20;
+let MAX_COLORES_FACIL = 12;
+let MAX_COLORES_DIFICIL = 15;
+
 
 // --- FUNCIÓN DE JONATHAN (NO TOCAR) ---
 function llamada() {
@@ -46,6 +58,12 @@ function charToColor(color) {
       return tColores.Azul;
     case "d": 
       return tColores.Dorado;
+    case "b":
+      return tColores.Blanco
+    case "m":
+      return tColores.Marron
+    case "n":
+      return tColores.Naranja
     default: 
       return null;
   }
@@ -61,6 +79,12 @@ function intToColor(numero) {
       return tColores.Azul;
     case 3: 
       return tColores.Dorado;
+    case 4: 
+      return tColores.Blanco;
+    case 5: 
+      return tColores.Marron;
+    case 6: 
+      return tColores.Naranja;
     default: 
       return null;
   }
@@ -76,6 +100,12 @@ function mostrarColor(color) {
       return "Azul";
     case tColores.Dorado: 
       return "Dorado";
+    case tColores.Blanco: 
+      return "Blanco";
+    case tColores.Marron: 
+      return "Marron";
+    case tColores.Naranja: 
+      return "Naranja";
     default: 
       return "";
   }
@@ -84,11 +114,19 @@ function mostrarColor(color) {
 //modo para generar secuencia segun el modo de juego
 function generarSecuencia(numColores, modo) {
   let secuencia = [];
-  for (let i = 0; i < MAX_COLORES_SEQ; i++) {
-    let rand = Math.floor(Math.random() * (numColores + 1));
-    secuencia.push(intToColor(rand));
+  if (modo == tModo.Facil){
+    for (let i = 0; i < MAX_COLORES_FACIL; i++) {
+      let rand = Math.floor(Math.random() * (numColores + 1));
+      secuencia.push(intToColor(rand));
+    }
+    return secuencia;
+  } else if (modo == tModo.Dificil){
+    for (let i = 0; i < MAX_COLORES_DIFICIL; i++) {
+      let rand = Math.floor(Math.random() * (numColores + 1));
+      secuencia.push(intToColor(rand));
+    }
+    return secuencia;
   }
-  return secuencia;
 }
 
 function comprobarColor(secuenciaColores, indice, color) {
@@ -105,7 +143,14 @@ function mostrarSecuencia(secuenciaColores, numero) {
 }
 
 function utilizarAyuda(secuenciaColores, indice, numAyudas){
-
+  if (numAyudas <= 0){
+    console.log("No te quedan ayudas")
+    return false;
+  } else if (numAyudas >= 1){
+    numAyudas--;
+    console.log("Has utilizadi una ayuda, te quedan: " + numAyudas)
+    return true;
+  }
 }
 
 //modo para generar secuencia segun el modo de juego
