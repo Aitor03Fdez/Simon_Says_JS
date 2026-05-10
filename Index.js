@@ -81,7 +81,8 @@ function mostrarColor(color) {
   }
 }
 
-function generarSecuencia(numColores) {
+//modo para generar secuencia segun el modo de juego
+function generarSecuencia(numColores, modo) {
   let secuencia = [];
   for (let i = 0; i < MAX_COLORES_SEQ; i++) {
     let rand = Math.floor(Math.random() * (numColores + 1));
@@ -103,8 +104,12 @@ function mostrarSecuencia(secuenciaColores, numero) {
   console.log("Memoriza la secuencia y pulsa Enter para continuar...");
 }
 
+function utilizarAyuda(secuenciaColores, indice, numAyudas){
 
-async function comenzarJuego(nombre, rl) {
+}
+
+//modo para generar secuencia segun el modo de juego
+async function comenzarJuego(nombre, rl, modo, numAyudas) {
 
   let secuencia = generarSecuencia(3);
   let longitudActual = 3;
